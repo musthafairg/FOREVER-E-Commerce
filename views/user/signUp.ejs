@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Forever</title>
+    <link rel="stylesheet" href="/css/signup.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <%- include('../partials/user/header.ejs') %>
+
+    <section class="signup-container">
+        <h2>Sign Up —</h2>
+
+  <% if (typeof error !== 'undefined') { %>
+        <div class="error-message"><%= error %></div>
+    <% } %>
+
+        <form action="/user/signUp" method="POST" class="signup-form">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="mobile" placeholder="Mobile No" required>
+            <input type="password" name="password" placeholder="Password" required>
+
+            <div class="options">
+                <a href="/user/verify-email" class="forgot">Forgot your password?</a>
+                <a href="/user/login" class="login">Login Here</a>
+            </div>
+
+            <button type="submit" class="btn-signup">Sign Up</button>
+
+            <div class="divider">
+                <span>or</span>
+            </div>
+
+            <button class="btn-google">
+                <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google logo">
+                Login with Google
+            </button>
+        </form>
+    </section>
+
+    <%- include('../partials/user/footer.ejs') %>
+
+    <script src="https://kit.fontawesome.com/a2e0e6cfd8.js" crossorigin="anonymous"></script>
+</body>
+</html>

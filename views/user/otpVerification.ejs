@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OTP Verification</title>
+    <link rel="stylesheet" href="/css/auth.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <%- include('../partials/user/header.ejs') %>
+
+    <main class="auth-container">
+      <div class="auth-card">
+        <h2 class="auth-title">OTP Verification</h2>
+
+        <form action="/user/verify-otp" method="POST" class="auth-form">
+          <label for="otp" class="auth-label">Enter OTP</label>
+
+          <div class="otp-inputs">
+            <input type="text" maxlength="1" name="otp1" required />
+            <input type="text" maxlength="1" name="otp2" required />
+            <input type="text" maxlength="1" name="otp3" required />
+            <input type="text" maxlength="1" name="otp4" required />
+            <input type="text" maxlength="1" name="otp5" required />
+            <input type="text" maxlength="1" name="otp6" required />
+          </div>
+
+          <p class="otp-timer">
+            Resend OTP in : <span id="timer">60</span> sec
+          </p>
+
+          <button type="submit" class="btn-primary">Verify OTP</button>
+
+          <button type="button" id="resendBtn" class="btn-link" disabled>
+            Resend OTP
+          </button>
+        </form>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <%- include('../partials/user/footer.ejs') %>
+
+    <script>
+      // Auto move cursor between OTP fields
+      const inputs = document.querySelectorAll(".otp-inputs input");
+      inputs.forEach((input, i) => {
+        input.addEventListener("input", (e) => {
+          if (e.target.value && i < inputs.length - 1) inputs[i + 1].focus();
+        });
+        input.addEventListener("keydown", (e) => {
+          if (e.key === "Backspace" && !e.target.value && i > 0)
+            inputs[i - 1].focus();
+        });
+      });
+
+      // OTP Resend Timer
+      let time = 60;
+      const timer = document.getElementById("timer");
+      const resendBtn = document.getElementById("resendBtn");
+
+      const countdown = setInterval(() => {
+        time--;
+        timer.textContent = time;
+        if (time <= 0) {
+          clearInterval(countdown);
+          resendBtn.disabled = false;
+          resendBtn.classList.add("active");
+          document.querySelector(".otp-timer").textContent = "";
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>

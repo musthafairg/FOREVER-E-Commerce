@@ -1,0 +1,157 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background: #fff;
+    color: #000;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 60px;
+    border-bottom: 1px solid #d0d0d0;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+.dot {
+    color: #b25b8e;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #000;
+    font-size: 0.9rem;
+}
+
+.icons i {
+    margin-left: 15px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+/* Login Section */
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 80px auto;
+    text-align: center;
+}
+
+.login-container h2 {
+    font-weight: 500;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #ccc;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-form input {
+    padding: 12px;
+    border: 1px solid #aaa;
+    font-size: 0.9rem;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+}
+
+.options a {
+    text-decoration: none;
+    color: #0066cc;
+}
+
+.btn-login {
+    background-color: #0058b0;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    margin: 20px 0;
+}
+.divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #ddd;
+    margin: 0 10px;
+}
+
+.btn-google {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.btn-google img {
+    width: 18px;
+}
+
+/* Footer */
+.footer {
+    background: #fff;
+    padding: 40px 80px;
+    border-top: 1px solid #ccc;
+    margin-top: 80px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-section h4 {
+    font-weight: 600;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section li {
+    margin: 6px 0;
+}
+
+.footer-section a {
+    text-decoration: none;
+    color: #555;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.85rem;
+    color: #555;
+}

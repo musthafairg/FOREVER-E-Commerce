@@ -1,0 +1,222 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background: #fff;
+    color: #000;
+}
+
+
+/* Common Auth Container */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 140px);
+  background: #fff;
+}
+
+.auth-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  padding: 40px 50px;
+  border-radius: 12px;
+  width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.auth-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 20px;
+}
+
+.auth-label {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+/* OTP Inputs */
+.otp-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.otp-inputs input {
+  width: 45px;
+  height: 50px;
+  text-align: center;
+  font-size: 20px;
+  border: 1px solid #9ca3af;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.otp-inputs input:focus {
+  border-color: #2563eb;
+}
+
+/* Timer */
+.otp-timer {
+  color: #374151;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+/* Buttons */
+.btn-primary {
+  width: 100%;
+  padding: 12px 0;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #1e40af;
+}
+
+.btn-link {
+  margin-top: 15px;
+  background: none;
+  border: none;
+  color: #2563eb;
+  cursor: not-allowed;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.btn-link.active {
+  cursor: pointer;
+  color: #1e3a8a;
+  font-weight: 500;
+}
+
+/* Header and Footer styling for consistency */
+.site-header,
+.site-footer {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-header .logo {
+  font-size: 22px;
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.site-header nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #374151;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.site-header nav a:hover {
+  color: #2563eb;
+}
+
+.site-footer {
+  border-top: 1px solid #e5e7eb;
+  text-align: center;
+  font-size: 14px;
+  color: #6b7280;
+  padding: 15px;
+}
+
+
+
+/* ===== FOOTER ===== */
+.footer {
+    background: #fff;
+    padding: 40px 80px;
+    border-top: 1px solid #ccc;
+    margin-top: 80px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-section h4 {
+    font-weight: 600;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section li {
+    margin: 6px 0;
+}
+
+.footer-section a {
+    text-decoration: none;
+    color: #555;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.85rem;
+    color: #555;
+}
+
+
+
+/* ===== HEADER ===== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 60px;
+    border-bottom: 1px solid #d0d0d0;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.dot {
+    color: #b25b8e;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #000;
+    font-size: 0.9rem;
+}
+
+.icons i {
+    margin-left: 15px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}

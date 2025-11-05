@@ -1,0 +1,160 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: #fff;
+    color: #000;
+}
+
+/* ===== HEADER (shared) ===== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 60px;
+    border-bottom: 1px solid #d0d0d0;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.dot {
+    color: #b25b8e;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #000;
+    font-size: 0.9rem;
+}
+
+.icons i {
+    margin-left: 15px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+
+.otp-container {
+  text-align: center;
+  background: white;
+  padding: 40px 60px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.otp-container h2 {
+  color: #2d3748;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.otp-container p {
+  font-size: 18px;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+/* OTP input fields */
+.otp-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.otp-inputs input {
+  width: 45px;
+  height: 50px;
+  text-align: center;
+  font-size: 20px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.otp-inputs input:focus {
+  border-color: #005bc5;
+  box-shadow: 0 0 5px rgba(0, 91, 197, 0.4);
+}
+
+/* Buttons */
+.verify-btn {
+  width: 50%;
+  background-color: #005bc5;
+  color: white;
+  font-size: 18px;
+  padding: 12px 0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.verify-btn:hover {
+  background-color: #004099;
+}
+
+.resend-btn {
+  background: none;
+  border: none;
+  color: #005bc5;
+  font-size: 16px;
+  margin-top: 15px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: 0.3s;
+}
+
+.resend-btn:enabled {
+  opacity: 1;
+}
+
+
+/* ===== FOOTER (shared) ===== */
+.footer {
+    background: #fff;
+    padding: 40px 80px;
+    border-top: 1px solid #ccc;
+    margin-top: 80px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-section h4 {
+    font-weight: 600;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section li {
+    margin: 6px 0;
+}
+
+.footer-section a {
+    text-decoration: none;
+    color: #555;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.85rem;
+    color: #555;
+}
