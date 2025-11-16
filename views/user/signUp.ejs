@@ -18,15 +18,19 @@
         <div class="error-message"><%= error %></div>
     <% } %>
 
-        <form action="/user/signUp" method="POST" class="signup-form">
-            <input type="text" name="name" placeholder="Name" required>
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="text" name="mobile" placeholder="Mobile No" required>
-            <input type="password" name="password" placeholder="Password" required>
+        <form action="/signUp" method="POST" class="signup-form" id="signup-form">
+            <input type="text" id="name" name="name" placeholder="Name" required>
+            <div id="error1" class="error-message1"></div>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <div id="error2" class="error-message1"></div>
+            <input type="text" id="mobile" name="mobile" placeholder="Mobile No" required>
+            <div id="error3" class="error-message1"></div>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <div id="error4" class="error-message1"></div>
 
             <div class="options">
-                <a href="/user/verify-email" class="forgot">Forgot your password?</a>
-                <a href="/user/login" class="login">Login Here</a>
+                <a href="/verify-email" class="forgot">Forgot your password?</a>
+                <a href="/login" class="login">Login Here</a>
             </div>
 
             <button type="submit" class="btn-signup">Sign Up</button>
@@ -35,15 +39,125 @@
                 <span>or</span>
             </div>
 
-            <button class="btn-google">
+            <a href="/auth/google" class="btn-google">
                 <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google logo">
                 Login with Google
-            </button>
+            </a>
         </form>
     </section>
 
     <%- include('../partials/user/footer.ejs') %>
+    <script>
+         const nameid=document.getElementById("name")
+         const emailid=document.getElementById("email")
+         const mobileid=document.getElementById("mobile")
+         const passid=document.getElementById("password")
+         const error1=document.getElementById("error1")
+         const error2=document.getElementById("error2")
+         const error3=document.getElementById("error3")
+         const error4=document.getElementById("error4")
+         const signupForm=document.getElementById("signup-form")
 
+
+
+        function nameValidateChecking(e){
+
+            const nameval=nameid.value;
+            const namepattern=/^[A-Za-z\s]+$/
+            if(nameval.trim()===""){
+                error1.style.display="block";
+                error1.innerHTML="please enter a valid name"
+            }else if(!namepattern.test(nameval)){
+                error1.style.display="block";
+                error1.innerHTML="Name can only contain aiphabets and spaces"
+
+            }else{
+                error1.style.display="none";
+                error1.innerHTML="";
+            }
+        }
+
+        function emailValidateChecking(e){
+
+            const emailval=emailid.value;
+            const emailPattern=/^([a-zA-Z0-9._-]+)@([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,})$/
+
+            if(!emailPattern.test(emailval)){
+                error2.style.display="block";
+                error2.innerHTML="Invalid Format"
+            }else{
+                error2.style.display="none";
+                error2.innerHTML="";
+            }
+        }
+
+        function mobileValidateChecking(e){
+            const mobileval=mobileid.value;
+
+            if(mobileval.trim()===""){
+                error3.style.display="block";
+                error3.innerHTML="Enter valid mobile number"
+            }else if(mobileval.length<10||mobileval.length>10){
+                error3.style.display="block";
+                error3.innerHTML="Enter 10 digit";
+            }else{
+                error3.style.display="none";
+                error3.innerHTML="";
+            }
+        }
+
+
+        function passwordValidateChecking(e){
+            const passval=passid.value;
+            const alpha=/[a-zA-Z]/;
+            const digit=/\d/;
+
+            if(passval.length<8){
+                error4.style.display="block";
+                error4.innerHTML="should contain atleast 8 characters"
+            }else if(!alpha.test(passval)||!digit.test(passval)){
+                error4.style.display="block";
+                error4.innerHTML="Should contain alphabets & digits"
+            }else{
+                error4.style.display="none";
+                error4.innerHTML="";
+            }
+        }
+
+         document.addEventListener("DOMContentLoaded",()=>{
+            signupForm.addEventListener("submit",(e)=>{
+                nameValidateChecking();
+                emailValidateChecking();
+                mobileValidateChecking();
+                passwordValidateChecking();
+
+
+                if(
+                !nameid||
+                !emailid||
+                !mobileid||
+                !passid||
+                !error1||
+                !error2||
+                !error3||
+                !error4||
+                !signupForm
+                ){
+                    console.error("One or more elements not found")
+                }
+
+                if(error1.innerHTML||
+                    error2.innerHTML||
+                    error3.innerHTML||
+                    error4.innerHTML
+                ){
+                    e.preventDefault()
+                }
+                
+         })
+        })
+    </script>
+    
     <script src="https://kit.fontawesome.com/a2e0e6cfd8.js" crossorigin="anonymous"></script>
 </body>
 </html>

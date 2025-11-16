@@ -12,13 +12,16 @@
      <%- include('../partials/user/header.ejs') %>
     <section class="login-container">
         <h2>Login —</h2>
+          <% if (typeof error !== 'undefined') { %>
+        <div class="error-message"><%= error %></div>
+    <% } %>
         <form action="/login" method="POST" class="login-form">
             <input type="email" name="email" placeholder="Email" required>
             <input type="password" name="password" placeholder="Password" required>
 
             <div class="options">
-                <a href="/user/verify-email" class="forgot">Forgot your password?</a>
-                <a href="/user/signUp" class="create">Create account</a>
+                <a href="/verify-email" class="forgot">Forgot your password?</a>
+                <a href="/signUp" class="create">Create account</a>
             </div>
 
             <button type="submit" class="btn-login">Sign In</button>

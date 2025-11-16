@@ -1,41 +1,84 @@
-import mongoose from "mongoose";
+import mongoose, { Mongoose, Schema } from "mongoose";
 
 const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, "Name is required"],
-      trim: true,
-      minlength: [3, "Name must be at least 3 characters long"],
+      required: true,
+      trim :true
     },
     email: {
       type: String,
-      required: [true, "Email is required"],
-      unique: true,
-      lowercase: true,
-      trim: true,
-      match: [/\S+@\S+\.\S+/, "Please enter a valid email address"],
+      required: true,
+      unique:true,
+      trim:true
     },
     mobile: {
       type: String,
-      required: [true, "Mobile number is required"],
-      match: [/^\d{10}$/, "Please enter a valid 10-digit mobile number"],
+      required: false,
+      unique:false,
+      sparse:true,
+      default:null
+    }, 
+    googleId:{
+      type:String,
+      unique:true,
+      sparse:true
     },
     password: {
       type: String,
-      required: [true, "Password is required"],
-      minlength: [6, "Password must be at least 6 characters long"],
+      required: false,
     },
-    isActive: {
+    isBlocked: {
       type: Boolean,
-      default: true,
+      default: false,
     },
+    isAdmin:{
+      type:Boolean,
+      default:false
+
+    },
+    cart:[{
+      type:Schema.Types.ObjectId,
+      ref:"Cart",
+    }],
+    wallet:{
+      type:Number,
+      default:0,
+    }, 
+    wishlist:[{
+      type:Schema.Types.ObjectId,
+      ref:"Wishlist"
+    }],
+    orderHistory:[{
+      type:Schema.Types.ObjectId,
+      ref:"Order"
+    }],
     createdAt: {
       type: Date,
       default: Date.now,
     },
-  },
-  { timestamps: true }
+    referalCode:{
+      type:String,
+    },
+    redeemed:{
+      type:Boolean
+    },
+    redeemedUsers:[{
+      type:Schema.Types.ObjectId,
+      ref:"User"
+    }],
+    searchHistory:[{
+      category:{
+        type:Schema.Types.ObjectId,
+        ref:"Category"
+      },
+      searchOn:{
+        type:Date,
+        default:Date.now
+      }
+    }]
+  },{timestamps:true}
 );
 
 

@@ -5,6 +5,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
 import session from 'express-session'
+import passport from './config/passport.js'
 import nocache from 'nocache'
 import userRouter from"./routes/user.js"
 import adminRouter from "./routes/admin.js"
@@ -17,7 +18,7 @@ connectDB()
 
 app.use(nocache())
 app.use(session({
-    secret: "my_secret_key",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -34,17 +35,13 @@ app.use(express.static('public'))
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 
+app.use(passport.initialize())
+app.use(passport.session())
 
-app.use('/user',userRouter)
+app.use('/',userRouter)
 app.use('/admin',adminRouter)
 
-app.get('/',(req,res)=>{
-  res.render("user/otpVerification")
-})
 
-app.get('/cp',(req,res)=>{
-  res.render("user/changePassword")
-})
 app.listen(port,()=>{
     console.log(`Server started on port ${port}`)
 })

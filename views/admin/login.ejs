@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOREVER. - Admin Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            padding: 20px; /* Add some padding for small screens */
+            box-sizing: border-box;
+        }
+
+        .logo {
+            font-size: 2.5rem; /* Larger font size for the logo */
+            font-weight: 800; /* Bolder for the logo */
+            margin-bottom: 40px; /* Space below the logo */
+            color: #000; /* Black color for the text */
+            text-transform: uppercase;
+        }
+
+        .dot {
+            color: #b25b8e; /* The pink dot color */
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Softer shadow */
+            width: 100%;
+            max-width: 380px; /* Max width for the form */
+            text-align: center;
+        }
+
+        .login-container h2 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 20px; /* Space between form groups */
+            text-align: left; /* Align labels to the left */
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .form-group input[type="email"],
+        .form-group input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            box-sizing: border-box; /* Include padding in width */
+        }
+
+        .form-group input[type="email"]:focus,
+        .form-group input[type="password"]:focus {
+            border-color: #b25b8e; /* Highlight on focus */
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(178, 91, 142, 0.2);
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-button:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">FOREVER<span class="dot">.</span></div>
+
+    <div class="login-container">
+        <h2>Admin Panel</h2>
+        <form action="/admin/login" method="post" >
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="login-button">Login</button>
+        </form>
+    </div>
+</body>
+</html>

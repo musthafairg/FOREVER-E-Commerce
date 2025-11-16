@@ -1,0 +1,199 @@
+<%- include('../partials/admin/header.ejs', { page: 'dashboard' }) %>
+
+<main class="dashboard-content">
+    <h2>Product Details</h2>
+
+    <section class="summary-cards">
+        <div class="card product-card">
+            <div class="card-icon"><i class="fas fa-box-open"></i></div>
+            <div class="card-info">
+                <div class="card-value">24</div>
+                <div class="card-title">Total Products</div>
+            </div>
+        </div>
+
+        <div class="card customer-card">
+            <div class="card-icon"><i class="fas fa-users"></i></div>
+            <div class="card-info">
+                <div class="card-value">33</div>
+                <div class="card-title">Total Customers</div>
+            </div>
+        </div>
+
+        <div class="card order-card">
+            <div class="card-icon"><i class="fas fa-box"></i></div>
+            <div class="card-info">
+                <div class="card-value">29</div>
+                <div class="card-title">Total Orders</div>
+            </div>
+        </div>
+
+        <div class="card revenue-card">
+            <div class="card-icon"><i class="fas fa-dollar-sign"></i></div>
+            <div class="card-info">
+                <div class="card-value">$ 54,313</div>
+                <div class="card-title">Total Revenue</div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="analysis-section">
+        <div class="sale-graph-panel">
+            <h3>Sale Graph</h3>
+            <div class="graph-header">
+                <button class="time-button">WEEKLY</button>
+                <button class="time-button active">MONTHLY</button>
+                <button class="time-button">YEARLY</button>
+            </div>
+            <div class="graph-placeholder">
+                <img src="placeholder-chart.png" alt="Sale Graph Placeholder">
+                <div class="y-axis">
+                    <span>$400</span><span>$300</span><span>$200</span><span>$100</span><span>$0</span>
+                </div>
+                <div class="x-axis">
+                    <span>JUL</span><span>AUG</span><span>SEP</span><span>OCT</span><span>NOV</span><span>DEC</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="bestsellers-panel">
+            <h3>Best Sellers</h3>
+            <div class="bestseller-list">
+                <div class="bestseller-item">
+                    <img src="placeholder-product-1.png" alt="Product 1">
+                    <div class="item-details">
+                        <p class="item-name">Girls Round Neck Cotton Top</p>
+                        <p class="item-price">$38.000</p>
+                        <p class="item-sales">999 sales</p>
+                    </div>
+                </div>
+                <div class="bestseller-item">
+                    <img src="placeholder-product-2.png" alt="Product 2">
+                    <div class="item-details">
+                        <p class="item-name">Girls Round Neck Cotton Top</p>
+                        <p class="item-price">$38.000</p>
+                        <p class="item-sales">999 sales</p>
+                    </div>
+                </div>
+                <div class="bestseller-item">
+                    <img src="placeholder-product-3.png" alt="Product 3">
+                    <div class="item-details">
+                        <p class="item-name">Women Round Neck Cotton Top</p>
+                        <p class="item-price">$38.000</p>
+                        <p class="item-sales">999 sales</p>
+                    </div>
+                </div>
+            </div>
+            <button class="report-button">REPORT</button>
+        </div>
+    </section>
+
+    <section class="recent-orders">
+        <h3>Recent Orders</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Order Details</th>
+                        <th>Payment & Status</th>
+                        <th>Actions & Control</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="order-id">#24258</td>
+                        <td>
+                            <p class="product-item">Kid Tapered Slim Fit Trouser x 4 M</p>
+                            <p class="product-item">Girl's Round Neck Cotton Top x 3 M</p>
+                            <p class="product-item">Men Slim Fit Relaxed Denim Jacket x 1 L</p>
+                            <p class="customer-name">Mohammed Musthafa</p>
+                            <p class="address">Parambam House, Iringallur, Vengara, Malappuram, Kerala, India, 686304</p>
+                        </td>
+                        <td>
+                            <p>Items : 3</p>
+                            <p>Method : COD</p>
+                            <p>Payment : Pending</p>
+                            <p>Date : 9/13/2025</p>
+                        </td>
+                        <td>
+                            <select class="order-status-select">
+                                <option>Order Placed</option>
+                                <option>Processing</option>
+                                <option>Shipped</option>
+                                <option>Delivered</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="order-id">#24257</td>
+                        <td>
+                            <p class="product-item">Kid Tapered Slim Fit Trouser x 6 M</p>
+                            <p class="customer-name">Abbas</p>
+                            <p class="address">Parambam House, Iringallur, Vengara, Malappuram, Kerala, India, 686304</p>
+                        </td>
+                        <td>
+                            <p>Items : 1</p>
+                            <p>Method : COD</p>
+                            <p>Payment : Pending</p>
+                            <p>Date : 9/13/2025</p>
+                        </td>
+                        <td>
+                            <select class="order-status-select">
+                                <option>Order Placed</option>
+                                <option>Processing</option>
+                                <option>Shipped</option>
+                                <option>Delivered</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="order-id">#24256</td>
+                        <td>
+                            <p class="product-item">Kid Tapered Slim Fit Trouser x 6 M</p>
+                            <p class="customer-name">Abbas</p>
+                            <p class="address">Parambam House, Iringallur, Vengara, Malappuram, Kerala, India, 686304</p>
+                        </td>
+                        <td>
+                            <p>Items : 1</p>
+                            <p>Method : COD</p>
+                            <p>Payment : Pending</p>
+                            <p>Date : 9/13/2025</p>
+                        </td>
+                        <td>
+                            <select class="order-status-select">
+                                <option>Order Placed</option>
+                                <option>Processing</option>
+                                <option>Shipped</option>
+                                <option>Delivered</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="order-id">#24255</td>
+                        <td>
+                            <p class="product-item">Kid Tapered Slim Fit Trouser x 6 M</p>
+                            <p class="customer-name">Abbas</p>
+                            <p class="address">Parambam House, Iringallur, Vengara, Malappuram, Kerala, India, 686304</p>
+                        </td>
+                        <td>
+                            <p>Items : 1</p>
+                            <p>Method : COD</p>
+                            <p>Payment : Pending</p>
+                            <p>Date : 9/13/2025</p>
+                        </td>
+                        <td>
+                            <select class="order-status-select">
+                                <option>Order Placed</option>
+                                <option>Processing</option>
+                                <option>Shipped</option>
+                                <option>Delivered</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+

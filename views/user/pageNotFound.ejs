@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Page Not Found | Forever</title>
+    <link rel="stylesheet" href="/css/login.css"> 
+    <style>
+        /* --- 404 Error Page Specific Styles --- */
+
+.error-page-container {
+    /* Centers the content vertically within the remaining space (between header/footer) */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh; /* Ensures it takes up a good amount of vertical space */
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.error-code {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.error-message {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 5px;
+}
+
+/* Action Buttons Container */
+.actions {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+/* Base style for action buttons (distinguished from .btn-login) */
+.btn-action {
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background-color 0.2s, border-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; 
+}
+
+/* Primary Button (Solid Blue) - GO BACK */
+.primary-btn-action {
+    background-color: #0058b0; /* Matches your .btn-login blue */
+    color: #ffffff;
+    border: 1px solid #0058b0;
+}
+
+.primary-btn-action:hover {
+    background-color: #004a92;
+    border-color: #004a92;
+}
+
+/* Secondary Button (Outlined Blue) - GO TO HOME */
+.secondary-btn-action {
+    background-color: #ffffff;
+    color: #0058b0;
+    border: 1px solid #0058b0;
+}
+
+.secondary-btn-action:hover {
+    background-color: #f0f0f0; /* Light background on hover */
+    color: #004a92;
+    border-color: #004a92;
+}
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a2e0e6cfd8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <%- include('../partials/user/header.ejs') %>
+
+    <section class="error-page-container">
+        <h1 class="error-code">404, Page not found</h1>
+        <p class="error-message">Something went wrong. It looks like your requested resource could not be found.</p>
+        <p class="error-message">It looks like the link is broken or the page is removed.</p>
+        
+        <div class="actions">
+            <a href="javascript:history.back()" class="btn-action primary-btn-action">
+                <i class="fas fa-arrow-left"></i> GO BACK
+            </a>
+            <a href="/" class="btn-action secondary-btn-action">
+                <i class="fas fa-home"></i> GO TO HOME
+            </a>
+        </div>
+    </section>
+
+    <%- include('../partials/user/footer.ejs') %>
+</body>
+</html>
