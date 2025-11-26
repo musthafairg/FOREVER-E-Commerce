@@ -16,11 +16,18 @@
         <div class="error-message"><%= error %></div>
     <% } %>
         <form action="/login" method="POST" class="login-form">
+            <div class="input-wrapper">
             <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Password" required>
+            </div>
+
+            <div class="input-wrapper password-wrapper">
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <i class="fa-regular fa-eye" id="togglePass"></i>
+            </div>
+
 
             <div class="options">
-                <a href="/verify-email" class="forgot">Forgot your password?</a>
+                <a href="/forgot-password" class="forgot">Forgot your password?</a>
                 <a href="/signUp" class="create">Create account</a>
             </div>
 
@@ -30,14 +37,25 @@
                 <span>or</span>
             </div>
 
-            <button class="btn-google">
+            <a href="/auth/google" class="btn-google">
                 <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google logo">
                 Login with Google
-            </button>
+            </a>
         </form>
     </section>
 
     <%- include('../partials/user/footer.ejs') %>
+    <script>
+    const passwordField = document.getElementById("password");
+    const togglePass = document.getElementById("togglePass");
+
+    togglePass.addEventListener("click", () => {
+        const isPassword = passwordField.type === "password";
+        passwordField.type = isPassword ? "text" : "password";
+        togglePass.classList.toggle("fa-eye-slash");
+    });
+</script>
+
     <script src="https://kit.fontawesome.com/a2e0e6cfd8.js" crossorigin="anonymous"></script>
 </body>
 </html>

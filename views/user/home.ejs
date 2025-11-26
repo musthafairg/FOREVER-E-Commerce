@@ -407,7 +407,7 @@
         <nav>
             <ul>
                 <li><a href="/">HOME</a></li>
-                <li><a href="/collection">COLLECTION</a></li>
+                <li><a href="/shop">COLLECTION</a></li>
                 <li><a href="/about">ABOUT</a></li>
                 <li><a href="/contact">CONTACT</a></li>
             </ul>
@@ -437,61 +437,19 @@
 
         <h2 class="collection-title">LATEST COLLECTIONS</h2>
         <section class="product-grid">
+           <%for(let i=0;i<products.length; i++){%>
+
             <%- include('partials/product-card', {
-                imgSrc: '/images/product-1.jpg',
-                name: 'Kids Tapered Slim Fit Trouser',
-                price: 36,
-                size: 'S/M'
-            }) %>
-            
-            <%- include('partials/product-card', {
-                imgSrc: '/images/product-2.jpg',
-                name: 'Girls Round Neck Cotton Top',
-                price: 30,
-                size: 'S/M'
-            }) %>
-            
-            <%- include('partials/product-card', {
-                imgSrc: '/images/product-3.jpg',
-                name: 'Men Tapered Fit Solid Cargo Trouser',
-                price: 72,
-                size: 'S/M'
-            }) %>
-            
-            <%- include('partials/product-card', {
-                imgSrc: '/images/product-4.jpg',
-                name: 'Womens Round Neck Cotton Top',
-                price: 40,
-                size: 'S/M'
-            }) %>
-            
-            <%- include('partials/product-card', {
-                imgSrc: '/images/product-5.jpg',
+                imgSrc: '/images/product-9.jpg',
                 name: 'Men Round Neck Cotton T-Shirt',
                 price: 26,
                 size: 'S/M'
             }) %>
-            
-            <%- include('partials/product-card', {
-                imgSrc: '/images/product-6.jpg',
-                name: 'Girls Round Neck Cotton Top',
-                price: 45,
-                size: 'S/M'
-            }) %>
-            
-            <%- include('partials/product-card', {
-                imgSrc: '/images/product-7.jpg',
-                name: 'Men Tapered Fit Distressed Trousers',
-                price: 59,
-                size: 'S/M'
-            }) %>
-            
-            <%- include('partials/product-card', {
-                imgSrc: '/images/product-8.jpg',
-                name: 'Men Round Neck Polo Cotton T-Shirt',
-                price: 49,
-                size: 'S/M'
-            }) %>
+
+
+
+
+            <%}%>
         </section>
 
 

@@ -39,82 +39,137 @@ nav a {
     font-size: 1.1rem;
     cursor: pointer;
 }
-
-/* Login Section */
+/* Login Section - Updated to match signup.css */
 .login-container {
     width: 100%;
-    max-width: 400px;
-    margin: 80px auto;
+    max-width: 420px;
+    margin: 60px auto;
+    background: #fff;
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
     text-align: center;
 }
 
 .login-container h2 {
-    font-weight: 500;
-    margin-bottom: 25px;
-    border-bottom: 1px solid #ccc;
-    display: inline-block;
-    padding-bottom: 5px;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
 }
 
-.login-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
+/* Input Fields */
 .login-form input {
-    padding: 12px;
-    border: 1px solid #aaa;
-    font-size: 0.9rem;
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border: 1px solid #d8d8d8;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    outline: none;
+    background: #fdfdfd;
 }
 
+.login-form input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59,130,246,0.15);
+}
+
+/* Error Message */
+.error-message {
+    color: #d9534f;
+    font-size: 0.78rem;
+    margin-bottom: 8px;
+    text-align: left;
+    display: block;
+}
+
+/* Options */
 .options {
     display: flex;
     justify-content: space-between;
-    font-size: 0.8rem;
+    margin: 10px 0 15px 0;
+    font-size: 0.85rem;
 }
 
 .options a {
+    color: #3b82f6;
     text-decoration: none;
-    color: #0066cc;
 }
 
+.options a:hover {
+    text-decoration: underline;
+}
+
+/* Login Button */
 .btn-login {
-    background-color: #0058b0;
+    width: 100%;
+    padding: 12px;
+    background-color: #0059d6;
     color: #fff;
     border: none;
-    padding: 12px;
+    border-radius: 6px;
+    font-size: 1rem;
     cursor: pointer;
-    font-size: 0.95rem;
+    margin-top: 5px;
 }
 
+.btn-login:hover {
+    background-color: #0047ad;
+}
+
+/* Divider */
 .divider {
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: #888;
     margin: 20px 0;
 }
-.divider::before, .divider::after {
-    content: '';
+
+.divider span {
+    background-color: #fff;
+    padding: 0 15px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.divider:before,
+.divider:after {
+    content: "";
     flex: 1;
     height: 1px;
     background: #ddd;
-    margin: 0 10px;
 }
 
+/* Google Button */
 .btn-google {
-    border: 1px solid #ccc;
-    padding: 10px;
-    background: #fff;
-    cursor: pointer;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
+    font-size: 0.95rem;
+    color: #444;
+    background: #fff;
+    transition: 0.2s;
+    text-decoration: none;
 }
+
 .btn-google img {
-    width: 18px;
+    width: 20px;
+}
+
+.btn-google:hover {
+    background: #f5f5f5;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .login-container {
+        margin: 30px 20px;
+        padding: 25px;
+    }
 }
 
 /* Footer */
@@ -156,14 +211,59 @@ nav a {
     color: #555;
 }
 
-.error-message{
-    color: red;
-    font-size: 0.75rem;
-    margin-top: -5px;
-    margin-bottom: -10px;
-    padding-left: 5px;
-    display: none;
+.password-wrapper {
+    position: relative;
     width: 100%;
-    text-align: left;
 }
 
+.password-wrapper input {
+    width: 100%;
+    padding-right: 40px; /* Space for eye icon */
+}
+
+.password-wrapper i {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+    font-size: 1rem;
+}
+
+.input-wrapper {
+    position: relative;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #d8d8d8;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    outline: none;
+    background: #fdfdfd;
+    box-sizing: border-box;
+}
+
+.input-wrapper input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59,130,246,0.15);
+}
+
+/* Eye icon styling */
+.password-wrapper i {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+    font-size: 1rem;
+}
+
+.password-wrapper input {
+    padding-right: 40px; /* Space for eye icon */
+}

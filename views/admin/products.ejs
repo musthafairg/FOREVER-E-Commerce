@@ -1,0 +1,258 @@
+<%- include("../../views/partials/admin/header") %>
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+</head>
+
+ <div class="main-layout">
+        
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="<%= locals.page === 'dashboard' ? 'active' : '' %>">
+                        <a href="/admin" style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%; height: 100%;">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="<%= locals.page === 'addProducts' ? 'active' : '' %>">
+                        <a href="/admin/addProducts" style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%; height: 100%;">
+                            <i class="fas fa-plus-circle"></i>
+                            Add Products
+                        </a>
+                    </li>
+                   <li class="<%= locals.page === 'products' ? 'active' : '' %>">
+                        <a href="/admin/products" style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%; height: 100%;">
+                            <i class="fas fa-list"></i>
+                            Products
+                        </a>
+                    </li>
+                    <li class="<%= locals.page === 'brands' ? 'active' : '' %>">
+                        <a href="/admin/brands" style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%; height: 100%;">
+                            <i class="fas fa-clipboard-list"></i>
+                            Brands
+                        </a>
+                    </li>
+                    <li class="<%= locals.page === 'users' ? 'active' : '' %>">
+                        <a href="/admin/users" style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%; height: 100%;">
+                            <i class="fas fa-users"></i>
+                            Users
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/coupons" style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%; height: 100%;">
+                            <i class="fas fa-tags"></i>
+                            Coupons
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/sales-report" style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%; height: 100%;">
+                            <i class="fas fa-chart-line"></i>
+                            Sales Report
+                        </a>
+                    </li>
+                   <li class="<%= locals.page === 'category' ? 'active' : '' %>">
+                        <a href="/admin/category" style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%; height: 100%;">
+                            <i class="fas fa-folder-open"></i>
+                            Category
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/offers" style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%; height: 100%;">
+                            <i class="fas fa-gift"></i>
+                            Offers
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+<section class="content-main">
+
+<div class="content-header">
+    <div>
+        <h2 class="content-title card-title">Products</h2>
+    </div>
+</div>
+<header class="card-header text-center mb-20">
+    <form action="" method="get" class="d-inline">
+        <div class="input-group input-group-sm border border-1 border-grey rounded-pill" style="width: 500px; margin-left: 230px;">
+            <input type="text" class="form-control border-0 rounded-pill" placeholder="Search products or brands" name="search">
+            <button class="btn  border-0" type="submit">Search</button>
+        </div>
+    </form>
+</header>
+<div class="right mt-5">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col"><b>Product name</b></th>
+                <th scope="col"><b>Image</b></th>
+
+                <th scope="col"><b>Brand</b></th>
+                <th scope="col"><b>Category</b></th>
+                <th scope="col"><b>Sale Price</b></th>
+                <th scope="col"><b>Offer Price</b></th>
+                <th scope="col"><b>Offer</b></th>
+                <th scope="col"><b>Quantity</b></th>
+                <th scope="col"><b>Action</b></th>
+                <th scope="col"><b>Edit</b></th>
+            </tr>
+        </thead>
+        <tbody>
+            <%for(let i=data.length-1;i>=0; i--){%>
+            
+            <tr>
+                <td><%=data[i].productName%></td>
+                <td> <img
+                        src="/uploads/re-image/<%=data[i].productImage[0]%>"
+                        alt="<%=data[i].productImage[0]%>"
+                        class="img-fluid rounded-circle"
+                        style="width: 100%; height: auto"/>
+                      </td>
+
+                <td><%=data[i].brand%></td>
+                <td><%=data[i].categoryname%></td>
+                <td><%=data[i].salePrice%></td>
+                <td>
+                    <%if(locals.data[i].productOffer){%>
+                        <%+data[i].productOffer%>
+                        <%}else{%>
+                            0%
+
+                            <%}%>
+
+                </td>
+                <td>
+                
+                    <%if(locals.data[i].productOffer===0){%>
+
+
+                    <button class="btn btn-info" onclick="addOffer('<%=data[i]._id%>')" style="width: 100px;">
+                        <a href="#" class="text-white">Add Offer</a>
+                    </button>
+                    <%}else{%>
+        
+                    <button class="btn btn-info" onclick="removeOffer('<%=data[i]._id%>')" style="width: 100px;">
+                        <a href="#" class="text-white">Remove</a>
+                    </button>
+
+                    <%}%>
+                
+                </td>
+                <td><%=data[i].quantity%></td>
+                <td>
+                
+                    <%if(data[i].isBlocked===false){%>
+                    <button class="btn btn-danger" style="width: 80px;">
+                        <a href="/admin/blockProduct?id=<%=data[i]._id%>" class="text-white" style="text-decoration: none;">Block</a>
+                    </button>
+                    <%}else{%>
+                    <button class="btn btn-success" style="width: 80px;">
+                        <a href="/admin/unblockProduct?id=<%=data[i]._id%>" class="text-white" style="text-decoration: none;">Unblock</a>
+                    </button>
+                    <%}%>
+                </td>
+                <td>
+                    <button class="btn btn-info" style="width: 80px;">
+                        <a href="/admin/editProduct?id=<%=data[i]._id%>" class="text-white" style="text-decoration: none;">Edit</a>
+                    </button>
+                </td>
+            </tr>
+            <%}%>
+        </tbody>
+
+    </table>
+</div>
+</div>
+</div>
+<div class="container mt-3">
+   <nav aria-label="Page navigation">
+       <ul class="pagination justify-content-center mb-20" style="margin-right: 200px;">
+
+
+           <% for (let i = 1; i <= totalPages; i++) { %>
+           <li class="page-item <%=(i === currentPage) ? 'active' : '' %>">
+               <a class="page-link" href="?page=<%= i %>"><%= i %></a>
+           </li>
+           <% } %>
+
+
+       </ul>
+   </nav>
+</div>
+</section>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+    async function addOffer(productId) {
+        const {value:amount}=await Swal.fire({
+            title:'Offer in percentage',
+            input:'number',
+            inputLabel:'percentage',
+            inputPlaceholder:'%'
+        })
+        $.ajax({
+            url:"/admin/addProductOffer",
+            method:"post",
+            data:{
+                percentage:amount,
+                productId:productId,
+
+            },
+            success:(response)=>{
+                if(response.status===true){
+                    location.reload()
+                    Swal.fire('Offer added','The Offer has been removed','success')
+                }else{
+                    alert("failed")
+                }
+            }
+        })
+    }
+
+ function removeOffer(productId){
+    try {
+        Swal.fire({
+            title:'Remove offer',
+            text:'Are you sure  you want to remove this offer',
+            icon:'warning',
+            showCancelButton:true,
+            confirmButtonColor:'#3085d6',
+            cancelButtonColor:'d33',
+            confirmButtonText:'Yes,remove it!',
+            timer:5000,
+            timerProgressBar:true,
+        }).then(async(result)=>{
+            if(result.isConfirmed){
+                $.ajax({
+                    url:"/admin/removeProductOffer",
+                    method:"post",
+                    data:{
+                        productId:productId,
+
+                    },success:(response)=>{
+                        if(response.status===true){
+                            Swal.fire('Removed','The Offer has been removed','success')
+                            location.reload()
+                        }else if(response.status===false){
+                            Swal.fire("failed")
+
+                        }else{
+                            alert("failed")
+                        }
+                    }                })
+            }
+        })
+    } catch (error) {
+        
+        console.error("Error");
+        
+    }
+ }
+
+</script>
