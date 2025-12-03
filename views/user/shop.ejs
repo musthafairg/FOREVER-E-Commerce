@@ -213,6 +213,12 @@
    text-align: center;
  }
 
+.product-card-links{
+  text-decoration: none;
+  color: #080808;
+}
+
+
  
 </style>
 
@@ -233,14 +239,14 @@
        <div class="filter-section">
          <div class="filter-title">Categories</div>
          <div class="category-brand-container">
-           <ul>
+           <div>
             <%for(let i=0;i<category.length;i++){%>
-               <li class="filter-item">
+               <div class="filter-item">
                  <a href="/filter?category=<%+category[i]._id%>"><%=category[i].name%></a>
 
-               </li>
+               </div>
                <%}%>
-           </ul>
+              </div>
          </div>
        </div>
 
@@ -249,13 +255,13 @@
        <div class="filter-section">
          <div class="filter-title">Brands</div>
          <div class="category-brand-container">
-           <ul>
+           <div>
             <%for(let i=0;i<brand.length;i++){%>
-               <li class="filter-item">
+               <div class="filter-item">
                  <a href="/filter?brand=<%=brand[i]._id%>"><%=brand[i].brandName%></a>
-               </li>
+               </div>
                <%}%>
-           </ul>
+              </div>
          </div>
        </div>
 
@@ -279,7 +285,7 @@
         <%for(let i=0;i<products.length;i++){%>
          <div class="product-card">
            <span class="wishlist-btn" onclick="">❤️</span>
-            <a href="/productDetails?id=<%= products[i]._id %>">
+            <a class="product-card-links" href="/productDetails?id=<%= products[i]._id %>">
                 <img src="/uploads/re-image/<%=products[i].productImage[0]%>" alt="<%=products[i].productName%>" />
                 <h4><%=products[i].productName%></h4>
                 <p>Brand:<%=products[i].brand%></p>

@@ -11,7 +11,7 @@ router.get('/signUp',loadSignup)
 router.post('/signUp',signupUser)
 router.post("/verify-otp",verifyOtp)
 router.post("/resend-otp",resendOtp)
-router.get('/auth/google',passport.authenticate('google',{scope:['profile','email']}))
+ router.get('/auth/google',passport.authenticate('google',{scope:['profile','email']}))
 router.get('/auth/google/callback',passport.authenticate('google',{failureRedirect:'/signup'}),(req,res)=>{
     res.redirect('/')
 })

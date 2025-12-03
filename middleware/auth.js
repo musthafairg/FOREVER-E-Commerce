@@ -4,16 +4,23 @@ import User from '../models/userModel.js';
 export const userAuth = async (req, res, next) => {
   try {
     if (!req.session.user) {
+      
+      
       return res.redirect("/login");
     }
 
     const user = await User.findById(req.session.user);
 
     if (user && !user.isBlocked) {
+
       return next();
     }
-
-    return res.redirect("/login");
+if (user.isBlocked) {
+      req.session.destroy(() => {
+        return res.redirect("/login");
+      });
+      return;
+    }
   } catch (error) {
     console.error("Error in userAuth middleware:", error);
     res.status(500).send("Internal Server Error");
