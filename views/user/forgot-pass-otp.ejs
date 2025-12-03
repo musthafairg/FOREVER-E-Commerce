@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OTP Verification</title>
+    <link rel="stylesheet" href="/css/auth.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+  </head>
+  <body>
+    <!-- Header -->
+    <%- include('../partials/user/header.ejs') %>
+
+    <main class="auth-container">
+      <div class="auth-card">
+        <h2 class="auth-title">OTP Verification</h2>
+
+        <form action="/verify-otp-pass" method="POST" class="auth-form" onsubmit="return validateOTPForm()">
+          <label for="otp" class="auth-label">Enter OTP</label>
+
+          <div class="otp-inputs" id="otp">
+            <input type="text" maxlength="1" name="otp1" required />
+            <input type="text" maxlength="1" name="otp2" required />
+            <input type="text" maxlength="1" name="otp3" required />
+            <input type="text" maxlength="1" name="otp4" required />
+            <input type="text" maxlength="1" name="otp5" required />
+            <input type="text" maxlength="1" name="otp6" required />
+          </div>
+
+          <p class="otp-timer">
+            Resend OTP in : <span id="timer">60</span> sec
+          </p>
+
+          <button type="submit" class="btn-primary">Verify OTP</button>
+
+          <button type="button" id="resendBtn" class="btn-link" onclick="resendOtp()" disabled>
+            Resend OTP
+          </button>
+        </form>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <%- include('../partials/user/footer.ejs') %>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  let time = 60;
+  let countdown;
+
+  const resendBtn = document.getElementById("resendBtn");
+
+  const inputs = document.querySelectorAll(".otp-inputs input");
+
+  inputs.forEach((input, i) => {
+    input.addEventListener("input", (e) => {
+      if (e.target.value.match(/^[0-9]$/) && i < inputs.length - 1) {
+        inputs[i + 1].focus();
+      } else if (!e.target.value.match(/^[0-9]$/) && e.target.value) {
+        e.target.value = "";
+      }
+    });
+
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Backspace" && !e.target.value && i > 0) {
+        inputs[i - 1].focus();
+      }
+    });
+  });
+
+  function startTimer() {
+    clearInterval(countdown);
+    resendBtn.disabled = true;
+    resendBtn.classList.remove("active");
+
+    const timerText = document.querySelector(".otp-timer");
+    timerText.innerHTML = `Resend OTP in : <span id="timer">${time}</span> sec`;
+
+    countdown = setInterval(() => {
+      time--;
+      document.getElementById("timer").textContent = time;
+
+      if (time <= 0) {
+        clearInterval(countdown);
+        resendBtn.disabled = false;
+        resendBtn.classList.add("active");
+        timerText.textContent = "OTP expired. Click 'Resend OTP' to get a new one.";
+      }
+    }, 1000);
+  }
+
+  startTimer();
+
+
+  /* ------------------ OTP Submit Validation -------------------- */
+
+  function validateOTPForm() {
+    let fullOTP = "";
+    inputs.forEach(inp => fullOTP += inp.value);
+
+    if (fullOTP.length !== 6) {
+      Swal.fire({
+        icon: "warning",
+        title: "Incomplete OTP",
+        text: "Please enter all 6 digits"
+      });
+      return false;
+    }
+
+    $.ajax({
+      type: "POST",
+      url: "/verify-otp-pass",
+      data: { otp: fullOTP },
+
+      success: function (response) {
+        if (response.success) {
+          Swal.fire({
+            icon: "success",
+            title: "OTP Verified Successfully",
+            showConfirmButton: false,
+            timer: 1500
+          }).then(() => {
+            window.location.href = response.redirectUrl;
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Verification Failed",
+            text: response.message
+          });
+        }
+      },
+
+      error: function (jqXHR) {
+        const errorData = jqXHR.responseJSON || {};
+        Swal.fire({
+          icon: "error",
+          title: "Server Error",
+          text: errorData.message || "Could not verify OTP. Try again."
+        });
+      }
+    });
+
+    return false;
+  }
+
+
+  /* ------------------ RESEND OTP -------------------- */
+
+  function resendOtp() {
+    inputs.forEach(i => i.value = "");
+    inputs[0].focus();
+
+    time = 60;
+    startTimer();
+
+    $.ajax({
+      type: "POST",
+      url: "/resend-otp-pass",   // corrected
+      data: {},
+
+      success: function (response) {
+        if (response.success) {
+          Swal.fire({
+            icon: "success",
+            title: "New OTP Sent Successfully",
+            text: response.message,
+            showConfirmButton: false,
+            timer: 1500
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Resend Failed",
+            text: response.message
+          });
+          resendBtn.disabled = false;
+        }
+      },
+
+      error: function (jqXHR) {
+        const errorData = jqXHR.responseJSON || {};
+        Swal.fire({
+          icon: "error",
+          title: "Network Error",
+          text: errorData.message || "Server not reachable."
+        });
+        resendBtn.disabled = false;
+      }
+    });
+  }
+</script>
+
+  </body>
+</html>

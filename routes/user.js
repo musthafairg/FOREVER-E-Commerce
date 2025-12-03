@@ -2,7 +2,7 @@ import express from 'express'
 const router=express.Router()
 import {filterByPrice,searchProducts,filterProduct,logout,loadSignup,signupUser,loadLogin,verifyOtp,resendOtp,loadPageNotFound,login,loadHomepage,loadShoppingPage} from '../controller/user/userController.js'
 import passport from '../config/passport.js'
-import {getForgotPasswordPage,forgotEmailValid}from '../controller/user/profileController.js'
+import {getForgotPasswordPage,forgotEmailValid,verifyOtpPass,getRestPassPage,resendOtpPass,postNewPassword}from '../controller/user/profileController.js'
 import {userAuth} from '../middleware/auth.js'
 import {productDetailes}from '../controller/user/productController.js'
 
@@ -32,8 +32,13 @@ router.post("/search",userAuth,searchProducts)
 router.get("/productDetails",userAuth,productDetailes)
 
 //Profile Management
-router.get("/forgot-password",userAuth,getForgotPasswordPage)
-router.post("/forgot-email-valid",userAuth,forgotEmailValid)
+router.get("/forgot-password",getForgotPasswordPage)
+router.post("/forgot-email-valid",forgotEmailValid)
+router.post("/verify-otp-pass",verifyOtpPass)
+router.post("/resend-otp-pass",resendOtpPass)
+router.get("/reset-password",getRestPassPage)
+router.post("/reset-password",postNewPassword)
+
 
 //Error Management
 router.get("/pageNotFound",loadPageNotFound)

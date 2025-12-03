@@ -20,7 +20,7 @@ export const login=async(req,res)=>{
             if(passwordMatch){
                 console.log("password matched");
                 
-                req.session.admin=true;
+                req.session.admin=admin._id;
                 return res.redirect('/admin')
             }else{
                 console.log("password didnot match");
