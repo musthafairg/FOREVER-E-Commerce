@@ -13,7 +13,7 @@ import adminRouter from "./routes/admin.js"
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const app=express()
-const port = process.env.PORT || 4000
+const port = process.env.PORT
 connectDB()
 
 app.use(nocache())
@@ -42,6 +42,6 @@ app.use('/',userRouter)
 app.use('/admin',adminRouter)
 
 
-app.listen(port,()=>{
+app.listen(port, "0.0.0.0", () => {
     console.log(`Server started on port ${port}`)
 })
