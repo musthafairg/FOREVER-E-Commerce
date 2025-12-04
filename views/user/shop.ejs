@@ -35,14 +35,15 @@
 
 
  .search-button {
-   padding: 8px 15px;
+   padding: 8px 8px;
    background-color: #1e918b;
    color: #fff;
    border: none;
    cursor: pointer;
-   font-size: 14px;
+   font-size: 12px;
    border-radius: 15px;
    margin-right: 5px;
+  
    transition: background-color 0.3s, transform 0.2s;
  }
 
@@ -218,6 +219,24 @@
   color: #080808;
 }
 
+.clear-button {
+    padding: 8px 12px;
+    background: #ff4d4d;
+    color: #fff;
+    border-radius: 15px;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.clear-button:hover {
+    background: #e60000;
+}
+
+.sort-select {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 
  
 </style>
@@ -227,11 +246,30 @@
  <section class="shop-page container">
    <div class="shop-topbar">
      <div class="search-bar">
-       <form action="/search" method="POST" class="search-form">
-         <input type="text" name="query" placeholder="Search items..." class="search-input" />
-         <button type="submit" class="search-button">Search</button>
-       </form>
+
+      <form action="/search" method="POST" class="search-form">
+    <input type="text" name="query" placeholder="Search items..." class="search-input" value="<%= search || '' %>" />
+    
+    <button type="submit" class="search-button">Search </button>
+
+    <% if (search) { %>
+        <a href="/clear-search" class="clear-button">✖</a>
+    <% } %>
+</form>
+
+       
      </div>
+     <form method="GET" id="sortForm">
+  <select name="sort" class="sort-select" onchange="document.getElementById('sortForm').submit()">
+      <option value="">Sort By</option>
+      <option value="priceLow" <%= sort === 'priceLow' ? 'selected' : '' %>>Price: Low to High</option>
+      <option value="priceHigh" <%= sort === 'priceHigh' ? 'selected' : '' %>>Price: High to Low</option>
+      <option value="az" <%= sort === 'az' ? 'selected' : '' %>>A → Z</option>
+      <option value="za" <%= sort === 'za' ? 'selected' : '' %>>Z → A</option>
+  </select>
+</form>
+
+
    </div>
   
    <div class="product-list-container">
@@ -242,7 +280,7 @@
            <div>
             <%for(let i=0;i<category.length;i++){%>
                <div class="filter-item">
-                 <a href="/filter?category=<%+category[i]._id%>"><%=category[i].name%></a>
+                 <a href="/filter?category=<%=category[i]._id%>"><%=category[i].name%></a>
 
                </div>
                <%}%>

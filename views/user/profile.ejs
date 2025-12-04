@@ -1,0 +1,211 @@
+<%- include("../../views/partials/user/header") %>
+
+<style>
+/* ========================= GLOBAL ========================= */
+.main {
+    padding: 40px 0;
+    background: #f6f6f6;
+}
+
+.profile-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+/* Force two-column structure */
+.profile-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+/* ========================= LEFT MENU ========================= */
+.dashboard-menu {
+    /* background: rgba(180, 220, 220, 0.7); */
+    /* border-radius: 12px; */
+    padding: 18px;
+    width: 280px;
+    /* box-shadow: 0 4px 12px rgba(0,0,0,0.15); */
+    backdrop-filter: blur(4px);
+    
+}
+
+.dashboard-menu ul {
+    padding-left: 0;
+    list-style: none;
+    margin: 0;
+}
+
+.dashboard-menu .nav-link {
+    display: block;
+    background: rgba(255,255,255,0.6);
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    color: #2d6a72;
+    text-align: left;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.dashboard-menu .nav-link:hover,
+.dashboard-menu .nav-link.active {
+    background: #d6eef3;
+    color: #1c4e55;
+    box-shadow: 0 3px 10px rgba(0,130,150,0.25);
+}
+
+/* ========================= RIGHT CONTENT ========================= */
+.dashboard-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    margin-left: 20px;
+}
+
+.card-green {
+    /* background: #b7dce9; */
+    width: 100%;
+    max-width: 700px;
+    border-radius: 12px;
+    /* box-shadow: 0 4px 16px rgba(0,0,0,0.25); */
+}
+
+.card-header {
+    /* background: #2e6468; */
+    /* border-radius: 12px 12px 0 0; */
+    padding: 15px;
+    text-align: center;
+    color: rgb(8, 8, 8);
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.card-body {
+    padding: 120px;
+    text-align: center;
+}
+
+.card-body p {
+    margin-bottom: 12px;
+    color: #1b3d44;
+    font-size: 1.1rem;
+}
+
+.btn-success {
+    background-color: #4c607c;
+    padding: 8px 20px;
+    border: none;
+    color: #fff;
+    border-radius: 6px;
+    margin: 8px 5px;
+    transition: 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.btn-success:hover {
+    background-color: #32455c;
+}
+
+/* ========================= BREADCRUMB ========================= */
+.page-header.breadcrumb-wrap {
+    background: #eee2e9;
+    padding: 15px 0;
+}
+
+.breadcrumb {
+    display: flex;
+    gap: 5px;
+    color: #222;
+    font-size: 16px;
+}
+
+.breadcrumb a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+/* ========================= RESPONSIVE ========================= */
+
+@media (max-width: 992px) {
+    .profile-row {
+        flex-direction: column;
+    }
+    .dashboard-menu {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .dashboard-content {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .btn-success {
+        width: 100%;
+    }
+}
+</style>
+
+
+<main class="main">
+
+    <!-- ======== BREADCRUMB ======== -->
+    <div class="page-header breadcrumb-wrap mb-3">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="#" rel="nofollow">Home</a>
+                <span></span> Profile <span></span> Account
+            </div>
+        </div>
+    </div>
+
+    <!-- ======== PAGE CONTENT ======== -->
+    <section class="pt-10 pb-10">
+        <div class="profile-container">
+
+            <div class="row profile-row">
+
+                <!-- LEFT MENU -->
+                <div class="col-md-4">
+                    <div class="dashboard-menu">
+                        <ul class="nav flex-column">
+                            <li><a class="nav-link active">Dashboard</a></li>
+                            <li><a class="nav-link">My Address</a></li>
+                            <li><a class="nav-link">Orders</a></li>
+                            <li><a class="nav-link">Wallet Status</a></li>
+                            <li><a class="nav-link">Wallet History</a></li>
+                            <li><a class="nav-link">Referals</a></li>
+                            <li><a class="nav-link" href="/logout">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- RIGHT CONTENT -->
+                <div class="col-md-8">
+                    <div class="dashboard-content">
+                        <div class="card card-green">
+                            <div class="card-header">User Profile</div>
+
+                            <div class="card-body">
+                                <p><strong>Phone:</strong> <%= user.mobile %></p>
+                                <p><strong>Email:</strong> <%= user.email %></p>
+
+                                <a class="btn btn-success">Change Email</a>
+                                <a class="btn btn-success">Change Password</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<%- include("../../views/partials/user/footer") %>

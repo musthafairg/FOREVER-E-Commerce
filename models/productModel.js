@@ -1,61 +1,163 @@
-import mongoose, { Mongoose, Schema } from "mongoose";
+// import mongoose, { Mongoose, Schema } from "mongoose";
 
-const productSchema = new mongoose.Schema({
+// const productSchema = new mongoose.Schema({
 
-    productName:{
-        type:String,
-        required:true,
+//     productName:{
+//         type:String,
+//         required:true,
+//     },
+//     description:{
+//         type:String,
+//         required:true,
+//     },
+//     brand:{
+//         type:String,
+//         required:true
+//     },
+//     category:{
+//         type:Schema.Types.ObjectId,
+//         ref:"Category",
+//         required:true,
+//     },
+//     regularPrice:{
+//         type:Number,
+//         required:true,
+//     },
+//     salePrice:{
+//         type:Number,
+//         required:true,
+//     },
+//     productOffer:{
+//         type:Number,
+//         default:0
+//     },
+//     quantity:{
+//         type:Number,
+//         default:true
+//     },
+//     color:{
+//         type:String,
+//         required:true
+//     },
+//     productImage:{
+//         type:[String],
+//         required:true,
+//     },
+//     isBlocked:{
+//         type:Boolean,
+//         default:false,
+//     },
+//     status:{
+//         type:String,
+//         enum:["Available","out of stock","Discountinued"],
+//         required:true,
+//         default:"Available"
+//     }
+// },
+// {timestamps:true})
+
+
+// const Product = mongoose.model("Product", productSchema);
+// export default Product;
+
+
+import mongoose, { Schema } from "mongoose";
+
+const reviewSchema = new mongoose.Schema({
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true
     },
-    description:{
-        type:String,
-        required:true,
+    rating: {
+        type: Number,
+        min: 1,
+        max: 5,
+        required: true
     },
-    brand:{
-        type:String,
-        required:true
+    comment: {
+        type: String,
+        trim: true
     },
-    category:{
-        type:Schema.Types.ObjectId,
-        ref:"Category",
-        required:true,
-    },
-    regularPrice:{
-        type:Number,
-        required:true,
-    },
-    salePrice:{
-        type:Number,
-        required:true,
-    },
-    productOffer:{
-        type:Number,
-        default:0
-    },
-    quantity:{
-        type:Number,
-        default:true
-    },
-    color:{
-        type:String,
-        required:true
-    },
-    productImage:{
-        type:[String],
-        required:true,
-    },
-    isBlocked:{
-        type:Boolean,
-        default:false,
-    },
-    status:{
-        type:String,
-        enum:["Available","out of stock","Discountinued"],
-        required:true,
-        default:"Available"
+    createdAt: {
+        type: Date,
+        default: Date.now
     }
-},
-{timestamps:true})
+});
 
+const productSchema = new mongoose.Schema(
+    {
+        productName: {
+            type: String,
+            required: true,
+        },
+        description: {
+            type: String,
+            required: true,
+        },
+        brand: {
+            type: String,
+            required: true
+        },
+        category: {
+            type: Schema.Types.ObjectId,
+            ref: "Category",
+            required: true,
+        },
+        regularPrice: {
+            type: Number,
+            required: true,
+        },
+        salePrice: {
+            type: Number,
+            required: true,
+        },
+        productOffer: {
+            type: Number,
+            default: 0
+        },
+        quantity: {
+            type: Number,
+            default: 0
+        },
+        color: {
+            type: String,
+            required: true
+        },
+        productImage: {
+            type: [String],
+            required: true,
+        },
+        isBlocked: {
+            type: Boolean,
+            default: false,
+        },
+        status: {
+            type: String,
+            enum: ["Available", "Out of stock", "Discontinued"],
+            required: true,
+            default: "Available"
+        },
+
+        // NEW FIELDS
+        highlights: {
+            type: [String],
+            default: []
+        },
+        specifications: {
+            type: Object,
+            default: {}
+        },
+
+        reviews: [reviewSchema],
+        avgRating: {
+            type: Number,
+            default: 0
+        }
+
+    },
+    { timestamps: true }
+);
 
 const Product = mongoose.model("Product", productSchema);
 export default Product;

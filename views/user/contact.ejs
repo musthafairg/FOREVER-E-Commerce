@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Forever</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        
+/* ================= TITLE ================= */
+.page-title {
+    text-align: center;
+    font-size: 22px;
+    margin-top: 30px;
+    letter-spacing: 1px;
+}
+
+.page-title span {
+    font-weight: 700;
+}
+
+/* ================= CONTACT SECTION ================= */
+.contact-section {
+    max-width: 1200px;
+    margin: 60px auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 80px;
+    padding: 0 40px;
+}
+
+.contact-image img {
+    width: 460px;
+    height: auto;
+    border-radius: 4px;
+}
+
+.contact-info h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.contact-info p {
+    line-height: 1.7rem;
+    font-size: 14px;
+    color: #444;
+}
+
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+    .contact-section {
+        flex-direction: column;
+        text-align: center;
+    }
+    .contact-info {
+        margin-top: 25px;
+    }
+    .contact-image img {
+        width: 100%;
+    }
+    .footer-columns {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <%- include('../partials/user/header.ejs') %>
+
+   
+<!-- ================= TITLE ================= -->
+<h2 class="page-title">CONTACT <span>US</span></h2>
+
+<!-- ================= CONTACT SECTION ================= -->
+<section class="contact-section">
+
+    <div class="contact-image">
+        <img src="img/contact_img.png" alt="Contact Image">
+    </div>
+
+    <div class="contact-info">
+        <h3>Our Store</h3>
+        <p>
+            54709 Iringallur<br>
+            Malappuram, Kerala, India<br><br>
+
+            Tel: +91 8606816432<br>
+            Email: admin@forever.com
+        </p>
+    </div>
+
+</section>
+
+    <%- include('../partials/user/footer.ejs') %>
+
+</body>
+</html>

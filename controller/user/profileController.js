@@ -197,3 +197,29 @@ console.log(email);
     
   }
  }
+
+
+
+ export const userProfile=async(req,res)=>{
+
+  try {
+    console.log("req.session.user",req.session.user);
+        console.log("req.session.user",req.user);
+
+    
+const userId = req.session?.user?._id || req.user?._id;
+    console.log("userId",userId);
+
+     const userData = await User.findById(userId).lean();
+    
+    console.log("userData",userData);
+    
+    res.render("user/profile",{
+      user:userData,
+    })
+
+  } catch (error) {
+    console.error("Error for retrieve profile data",error)
+    res.redirect("/pageNotFound")
+  }
+ }

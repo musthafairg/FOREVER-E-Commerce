@@ -1,35 +1,185 @@
+<!-- <style>
+    
+.product-gallery {
+    width: 100%;
+}
+
+.product-main-img {
+    width: 100%;
+    height: 420px;
+    object-fit: contain;
+    background: #f9f9f9;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.thumb-gallery img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    background: #f1f1f1;
+    border-radius: 8px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.thumb-gallery img:hover {
+    border: 2px solid #000;
+}
+
+.product-title {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.price-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.sale-price {
+    font-size: 26px;
+    font-weight: 700;
+    color: #b25b8e;
+}
+
+.regular-price {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.offer {
+    color: green;
+    font-weight: 600;
+}
+
+.product-features li {
+    list-style: none;
+    margin-bottom: 6px;
+}
+
+.cart-box .btn {
+    padding: 10px 25px;
+    font-size: 16px;
+}
+
+/* ---------------------------
+   ZOOM ON HOVER
+----------------------------*/
+
+.zoom-container {
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #f5f5f5;
+    cursor: zoom-in;
+    position: relative;
+}
+
+.zoom-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+}
+
+.zoom-container:hover .zoom-image {
+    transform: scale(1.8); /* Zoom level */
+    cursor: zoom-out;
+}
+
+/* Outer container */
+.zoom-container {
+    width: 100%;
+    height: 450px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #f5f5f5;
+    cursor: crosshair;
+}
+
+/* Image inside (zoomable) */
+.zoom-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* ========================= BREADCRUMB ========================= */
+.page-header.breadcrumb-wrap {
+    background: #eee2e9;
+    padding: 15px 0;
+}
+
+.breadcrumb {
+    display: flex;
+    gap: 5px;
+    color: #222;
+    font-size: 16px;
+}
+
+.breadcrumb a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.breadcrumb span::before {
+    content: "/";
+    margin: 0 4px;
+    color: #555;
+}
+
+
+</style>
+ -->
+<!-- 
 <%- include('../partials/user/header.ejs') %>
 
 <main class="main">
     <div class="container mt-4">
 
-        <div class="breadcrumb mb-4">
-            <a href="/">Home</a> /
-            <a href="/shop">Fashion</a> /
-            <span>Product Detail Page</span>
+     <!-- ======== BREADCRUMB ======== -->
+<!-- <div class="page-header breadcrumb-wrap mb-3">
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="/">Home</a>
+            <span></span> Fashion 
+            <span></span> Product Detail Page
         </div>
+    </div>
+</div>
+
 
         <div class="row" style="    display: flex;
-    justify-content: space-evenly;">
+    justify-content: space-evenly;"> -->
 
             <!-- LEFT: PRODUCT IMAGE GALLERY -->
-            <div class="col-lg-6 col-md-6 col-sm-12">
-                <div class="product-gallery">
+            <!-- <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="product-gallery"> -->
 
 
 
                    
                     <!-- MAIN IMAGES -->
-                    <div class="main-images mb-3">
-                    
+                        <!-- <div class="main-images mb-3">
+                        <div class="zoom-container" id="zoomContainer">
                             <img id="mainImage"
-                             class="product-main-img"
-                              src="/uploads/re-image/<%= product.productImage[0] %>"/>
-                        
-                    </div>
+                                class="zoom-image"
+                                src="/uploads/re-image/<%= product.productImage[0] %>">
+                        </div>
+                        </div> -->
+
 
                     <!-- THUMBNAILS -->
-                    <div class="thumb-gallery d-flex">
+                    <!-- <div class="thumb-gallery d-flex">
                         <% product.productImage.forEach(img => { %>
                             <img class="thumb-img" src="/uploads/re-image/<%= img %>" 
                             onclick="document.getElementById('mainImage').src=this.src;"/>
@@ -37,10 +187,10 @@
                     </div>
 
                 </div>
-            </div>
+            </div> -->
 
             <!-- RIGHT: PRODUCT INFO -->
-            <div class="col-lg-6 col-md-6 col-sm-12">
+            <!-- <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="product-info">
 
                     <h2 class="product-title"><%= product.productName %></h2>
@@ -48,40 +198,40 @@
                     <div class="brand-box mb-2">
                         <span>Brand:</span>
                         <a href="#"><%= product.brand %></a>
-                    </div>
+                    </div> -->
 
                     <!-- PRICE -->
-                    <div class="price-box mb-3">
+                    <!-- <div class="price-box mb-3">
                         <span class="sale-price">₹ <%= product.salePrice %></span>
                         <span class="regular-price">₹ <%= product.regularPrice %></span>
                         <span class="offer">
                             <% if (!totalOffer) { %> No offer
                             <% } else { %> <%= totalOffer %>% Off <% } %>
                         </span>
-                    </div>
+                    </div> -->
 
                     <!-- DESCRIPTION -->
-                    <p class="description">
+                    <!-- <p class="description">
                         <%= product.description %>
-                    </p>
+                    </p> -->
 
                     <!-- WARRANTY -->
-                    <ul class="product-features">
+                    <!-- <ul class="product-features">
                         <li>1 Year Brand Warranty</li>
                         <li>30 Day Return Policy</li>
                         <li>Cash on Delivery available</li>
-                    </ul>
+                    </ul> -->
 
                     <!-- ADD TO CART -->
-                    <div class="cart-box mt-3">
+                    <!-- <div class="cart-box mt-3">
                         <button class="btn btn-dark">Add to Cart</button>
                         <button class="btn btn-outline-secondary ms-2">
                             <i class="fa-regular fa-heart"></i>
                         </button>
-                    </div>
+                    </div> -->
 
                     <!-- META -->
-                    <ul class="product-meta mt-4">
+                    <!-- <ul class="product-meta mt-4">
                         <li>Stock Code: FWM15VT</li>
                         <li>Category: <%= category.name %></li>
                         <li>Availability: <%= quantity %> Items in Stock</li>
@@ -93,6 +243,544 @@
         </div>
 
     </div>
+</main> -->
+
+<!-- <%- include('../partials/user/footer.ejs') %> --> 
+
+<!-- 
+<script>
+const zoomContainer = document.getElementById("zoomContainer");
+const zoomImage = document.getElementById("mainImage");
+
+zoomContainer.addEventListener("mousemove", function (e) {
+
+    const rect = zoomContainer.getBoundingClientRect();
+    const x = e.clientX - rect.left; 
+    const y = e.clientY - rect.top;
+
+    const xPercent = (x / rect.width) * 100;
+    const yPercent = (y / rect.height) * 100;
+
+    zoomImage.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+    zoomImage.style.transform = "scale(2)";   // Zoom level
+});
+
+zoomContainer.addEventListener("mouseleave", function () {
+    zoomImage.style.transformOrigin = "center center";
+    zoomImage.style.transform = "scale(1)";
+});
+</script> -->
+
+<%- include('../partials/user/header.ejs') %>
+
+<style>
+/* ---------- EXISTING STYLES (unchanged) ---------- */
+
+.product-gallery {
+    width: 100%;
+}
+
+.product-main-img {
+    width: 100%;
+    height: 420px;
+    object-fit: contain;
+    background: #f9f9f9;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.thumb-gallery img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    background: #f1f1f1;
+    border-radius: 8px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.thumb-gallery img:hover {
+    border: 2px solid #000;
+}
+
+.product-title {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.price-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.sale-price {
+    font-size: 26px;
+    font-weight: 700;
+    color: #b25b8e;
+}
+
+.regular-price {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.offer {
+    color: green;
+    font-weight: 600;
+}
+
+.product-features li {
+    list-style: none;
+    margin-bottom: 6px;
+}
+
+.cart-box .btn {
+    padding: 10px 25px;
+    font-size: 16px;
+}
+
+/* ---------- ZOOM ---------- */
+
+.zoom-container {
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #f5f5f5;
+    cursor: crosshair;
+    position: relative;
+}
+
+.zoom-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* ---------- BREADCRUMB ---------- */
+
+.page-header.breadcrumb-wrap {
+    background: #eee2e9;
+    padding: 15px 0;
+}
+
+.breadcrumb {
+    display: flex;
+    gap: 5px;
+    color: #222;
+    font-size: 16px;
+}
+
+.breadcrumb a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.breadcrumb span::before {
+    content: "/";
+    margin: 0 4px;
+    color: #555;
+}
+
+/* ---------- RATINGS ---------- */
+
+.rating-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.rating-badge {
+    background: #388e3c;
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* ---------- COUPON BOX ---------- */
+
+.coupon-box {
+    background: #fff7e6;
+    border: 1px dashed #ff9800;
+    padding: 10px 12px;
+    border-radius: 6px;
+    margin-top: 12px;
+}
+
+/* ---------- STOCK ---------- */
+
+.stock-status {
+    margin-top: 8px;
+    font-weight: 600;
+}
+
+/* ---------- RELATED PRODUCTS ---------- */
+
+.related-product-card {
+    display:inline-grid;
+    text-align: center;
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #eee;
+    transition: transform 0.2s ease;
+}
+
+.related-product-card:hover {
+    transform: translateY(-3px);
+}
+
+/* ===========================================================
+   NEW PREMIUM (C-STYLE) DESIGN FOR HIGHLIGHTS & SPECIFICATIONS
+   =========================================================== */
+.card-section {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+.card-section h4 {
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.highlights-list li {
+    position: relative;
+    list-style: none;
+    padding-left: 22px;
+    margin-bottom: 10px;
+}
+
+.highlights-list li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: #4caf50;
+    font-weight: 700;
+}
+
+.spec-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.spec-table th,
+.spec-table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.spec-table th {
+    width: 30%;
+    background: #fafafa;
+    font-weight: 600;
+}
+
+/* ---------- REVIEWS (MINOR PREMIUM ENHANCEMENT) ---------- */
+
+.review-box {
+    background: #ffffff;
+    padding: 15px 18px;
+    border-radius: 10px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+    margin-bottom: 15px;
+}
+.container-spec{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.related-products{
+    display: flex;
+    gap: 50px;
+}
+
+</style>
+
+<main class="main">
+    <div class="container mt-4">
+
+        <!-- ======== BREADCRUMB ======== -->
+        <div class="page-header breadcrumb-wrap mb-3">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="/">Home</a>
+                    <span></span>
+                    <a href="/shop?category=<%= category._id %>"><%= category.name %></a>
+                    <span></span>
+                    <span><%= product.productName %></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="display: flex; justify-content: space-evenly;">
+
+            <!-- LEFT SIDE GALLERY -->
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="product-gallery">
+                    <div class="main-images mb-3">
+                        <div class="zoom-container" id="zoomContainer">
+                            <img id="mainImage" class="zoom-image"
+                                 src="/uploads/re-image/<%= product.productImage[0] %>">
+                        </div>
+                    </div>
+
+                    <div class="thumb-gallery d-flex">
+                        <% product.productImage.forEach(img => { %>
+                            <img class="thumb-img"
+                                 src="/uploads/re-image/<%= img %>"
+                                 onclick="changeMainImage(this.src)" />
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT SIDE DETAILS -->
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="product-info">
+
+                    <h2 class="product-title"><%= product.productName %></h2>
+
+                    <div class="brand-box mb-2">
+                        <span>Brand:</span>
+                        <a href="#"><%= product.brand %></a>
+                    </div>
+
+                    <!-- Ratings -->
+                    <div class="rating-box">
+                        <% if (product.avgRating > 0) { %>
+                            <span class="rating-badge">
+                                <%= product.avgRating.toFixed(1) %>
+                                <i class="fa fa-star"></i>
+                            </span>
+                        <% } else { %>
+                            <span>No ratings yet</span>
+                        <% } %>
+                        <span>(<%= product.reviews.length %> reviews)</span>
+                    </div>
+
+                    <!-- Price -->
+                    <div class="price-box mb-3 mt-2">
+                        <span class="sale-price">₹ <%= product.salePrice %></span>
+                        <span class="regular-price">₹ <%= product.regularPrice %></span>
+                        <span class="offer"><%= totalOffer %>% Off</span>
+                    </div>
+
+                    <!-- Coupon Box -->
+                    <div class="coupon-box">
+                        <strong>Available Offers</strong>
+                        <ul>
+                            <li><%= totalOffer %>% discount already applied.</li>
+                            <li>Use code <b>SAVE10</b> for extra 10% off (demo).</li>
+                        </ul>
+                    </div>
+
+                    <!-- Stock Status -->
+                    <% if (product.quantity < 1) { %>
+                        <div class="alert alert-warning mt-3">Out of Stock</div>
+                    <% } else { %>
+                        <div class="stock-status text-success mt-3">
+                            In Stock: <%= product.quantity %>
+                        </div>
+                    <% } %>
+
+                    <p class="description mt-3">
+                        <%= product.description %>
+                    </p>
+
+                    <ul class="product-features">
+                        <li>1 Year Warranty</li>
+                        <li>30 Day Return Policy</li>
+                        <li>COD Available</li>
+                    </ul>
+
+                    <div class="cart-box mt-3">
+                        <button class="btn btn-dark"
+                                onclick="handleAddToCart('<%= product._id %>')"
+                                <%= product.quantity < 1 ? "disabled" : "" %>>
+                            Add to Cart
+                        </button>
+                        <button class="btn btn-outline-secondary ms-2">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- =====================================================
+             HIGHLIGHTS (PREMIUM CARD STYLE)
+        ===================================================== -->
+        <div class="container-spec">
+        <div class="card-section mt-5">
+            <h4>Highlights</h4>
+            <ul class="highlights-list">
+                <% if (product.highlights.length > 0) { %>
+                    <% product.highlights.forEach(h => { %>
+                        <li><%= h %></li>
+                    <% }) %>
+                <% } else { %>
+                    <li>High quality build</li>
+                    <li>Premium design</li>
+                <% } %>
+            </ul>
+        </div>
+
+        <!-- =====================================================
+             SPECIFICATIONS (PREMIUM CARD STYLE)
+        ===================================================== -->
+        <div class="card-section">
+            <h4>Specifications</h4>
+            <table class="spec-table">
+                <% if (Object.keys(product.specifications).length > 0) { %>
+                    <% for (let key in product.specifications) { %>
+                        <tr>
+                            <th><%= key %></th>
+                            <td><%= product.specifications[key] %></td>
+                        </tr>
+                    <% } %>
+                <% } else { %>
+                    <tr>
+                        <th>Color</th>
+                        <td><%= product.color %></td>
+                    </tr>
+                    <tr>
+                        <th>Brand</th>
+                        <td><%= product.brand %></td>
+                    </tr>
+                <% } %>
+            </table>
+        </div>
+
+        <!-- =====================================================
+             REVIEW SECTION (ENHANCED PREMIUM STYLE)
+        ===================================================== -->
+        <div class="mt-5">
+            <h3>Customer Reviews</h3>
+
+            <div class="row">
+                <div class="col-md-7">
+                    <% if (product.reviews.length > 0) { %>
+                        <% product.reviews.forEach(r => { %>
+                            <div class="review-box">
+                                <strong><%= r.user?.name || "User" %></strong>
+                                <span> – <%= r.rating %> ★</span>
+                                <p class="mt-2"><%= r.comment %></p>
+                            </div>
+                        <% }) %>
+                    <% } else { %>
+                        <p>No reviews yet.</p>
+                    <% } %>
+                </div>
+
+                <div class="col-md-5">
+                    <h4>Write a Review</h4>
+
+                    <form action="/product/add-review" method="POST">
+                        <input type="hidden" name="productId" value="<%= product._id %>">
+
+                        <label>Rating</label>
+                        <select name="rating" class="form-select" required>
+                            <option value="5">5 - Excellent</option>
+                            <option value="4">4 - Good</option>
+                            <option value="3">3 - Average</option>
+                            <option value="2">2 - Poor</option>
+                            <option value="1">1 - Very Bad</option>
+                        </select>
+
+                        <label class="mt-2">Comment</label>
+                        <textarea name="comment" class="form-control" rows="3"></textarea>
+
+                        <button class="btn btn-primary mt-3">Submit Review</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- RELATED PRODUCTS -->
+        <div class="related-products-section">
+            <h3 class="mt-5 mb-3">Related Products</h3>
+
+            <div class="row related-products"  >
+                <% relatedProducts.forEach(p => { %>
+                    <div class="col-md-2 col-6">
+                        <a href="/product-details?id=<%= p._id %>" class="text-decoration-none text-dark">
+                            <div class="related-product-card">
+                                <img src="/uploads/re-image/<%= p.productImage[0] %>"
+                                     class="img-fluid mb-2">
+                                <p style="font-size: 14px;"><%= p.productName %></p>
+                                <strong>₹ <%= p.salePrice %></strong>
+                            </div>
+                        </a>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+
+        <div class="mt-5">
+            <a href="/demo-login" class="btn btn-outline-primary">Try Demo Login</a>
+        </div>
+</div>
+    </div>
 </main>
 
 <%- include('../partials/user/footer.ejs') %>
+
+<script>
+function changeMainImage(src) {
+    document.getElementById("mainImage").src = src;
+}
+
+const zoomContainer = document.getElementById("zoomContainer");
+const zoomImage = document.getElementById("mainImage");
+
+zoomContainer.addEventListener("mousemove", function (e) {
+    const rect = zoomContainer.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    zoomImage.style.transformOrigin = `${x / rect.width * 100}% ${y / rect.height * 100}%`;
+    zoomImage.style.transform = "scale(2)";
+});
+
+zoomContainer.addEventListener("mouseleave", function () {
+    zoomImage.style.transform = "scale(1)";
+});
+
+function handleAddToCart(productId) {
+    fetch("/add-to-cart", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ productId })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (!data.success) {
+            alert(data.message);
+            if (data.message.includes("unavailable")) {
+                window.location.href = "/shop";
+            }
+            if (data.message.includes("Login")) {
+                window.location.href = "/login";
+            }
+            return;
+        }
+        alert("Added to cart!");
+    });
+}
+</script>
