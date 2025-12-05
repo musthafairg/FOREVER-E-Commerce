@@ -238,6 +238,26 @@
     border-radius: 5px;
 }
 
+.filter-item a.active-filter {
+    color: #fff !important;
+    background: #007bff !important;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.filter-item a {
+    padding: 6px 12px;
+    display: inline-block;
+    border-radius: 6px;
+    transition: 0.2s ease;
+}
+
+.filter-item a:hover {
+    background: #e3e3e3;
+}
+
  
 </style>
 
@@ -271,37 +291,43 @@
 
 
    </div>
+
+  
   
    <div class="product-list-container">
      <aside class="sidebar">
-       <div class="filter-section">
-         <div class="filter-title">Categories</div>
-         <div class="category-brand-container">
-           <div>
-            <%for(let i=0;i<category.length;i++){%>
-               <div class="filter-item">
-                 <a href="/filter?category=<%=category[i]._id%>"><%=category[i].name%></a>
+   <div class="filter-section">
+    <div class="filter-title">Categories</div>
+    <div class="category-brand-container">
+        <% category.forEach(cat => { %>
+            <div class="filter-item">
+                <a href="/filter?category=<%= cat._id %>"
+                   class="<%= selectedCategory == cat._id ? 'active-filter' : '' %>">
+                   <%= cat.name %>
+                </a>
+            </div>
+        <% }) %>
+    </div>
+</div>
 
-               </div>
-               <%}%>
-              </div>
-         </div>
-       </div>
 
 
       
-       <div class="filter-section">
-         <div class="filter-title">Brands</div>
-         <div class="category-brand-container">
-           <div>
-            <%for(let i=0;i<brand.length;i++){%>
-               <div class="filter-item">
-                 <a href="/filter?brand=<%=brand[i].brandName%>"><%=brand[i].brandName%></a>
-               </div>
-               <%}%>
-              </div>
-         </div>
-       </div>
+     <div class="filter-section">
+    <div class="filter-title">Brands</div>
+    <div class="category-brand-container">
+        <% brand.forEach(br => { %>
+            <div class="filter-item">
+                <a href="/filter?brand=<%= br.brandName %>"
+                   class="<%= selectedBrand == br.brandName ? 'active-filter' : '' %>">
+                   <%= br.brandName %>
+                </a>
+            </div>
+        <% }) %>
+    </div>
+</div>
+
+
 
 
       
