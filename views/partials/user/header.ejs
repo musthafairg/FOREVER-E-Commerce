@@ -56,6 +56,8 @@ nav a {
 }
 
 
+
+
 /* ========================= RESPONSIVE NAV ========================= */
 @media (max-width: 900px) {
 
@@ -109,6 +111,23 @@ nav a {
     /* Show menu-toggle */
     .menu-toggle {
         display: inline-block !important;
+    }
+
+     /* Add spacing between logo and icons */
+    .navbar {
+        padding: 15px 20px !important;
+        gap: 40px;  /* creates space between logo and icons */
+    }
+
+    /* Ensure logo stays left and icons stay right */
+    .navbar .logo {
+        flex-shrink: 0;
+    }
+
+    .icons {
+        display: flex;
+        align-items: center;
+        gap: 15px; /* adds spacing between icons */
     }
 }
 
