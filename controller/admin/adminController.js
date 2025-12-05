@@ -25,12 +25,12 @@ export const login=async(req,res)=>{
             }else{
                 console.log("password didnot match");
                 
-                return res.redirect("/admin/login")
+                return res.render("admin/login",{error:"password didn't match"})
             }
         }else{
             console.log("admin not found");
             
-            return res.redirect("/admin/login")
+            return res.render("admin/login",{error:"admin not found"})
         }
     } catch (error) {
         console.error("Login error",error.message);

@@ -100,6 +100,11 @@
 
     <div class="login-container">
         <h2>Admin Panel</h2>
+
+   <% if (typeof error !== 'undefined') { %>
+        <div class="error-message"><%= error %></div>
+    <% } %>
+
         <form action="/admin/login" method="post" >
             <div class="form-group">
                 <label for="email">Email Address</label>

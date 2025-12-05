@@ -3,7 +3,6 @@ import Category from "../../models/categoryModel.js";
 import User from "../../models/userModel.js";
 import Cart from "../../models/cartModel.js"
 
-
 // ================= PRODUCT DETAILS PAGE =================
 export const productDetailes = async (req, res) => {
     try {
@@ -30,11 +29,19 @@ export const productDetailes = async (req, res) => {
         }
 
         const findCategory = product.category;
-        const categoryOffer = findCategory?.categoryOffer || 0;
-        const productOffer = product.productOffer || 0;
-        const totalOffer = categoryOffer + productOffer;
 
-        // Related products
+        // =============================
+        //     DYNAMIC OFFER LOGIC
+        // =============================
+        let totalOffer = 0;
+
+        if (product.regularPrice > 0) {
+            totalOffer = Math.round(
+                ((product.regularPrice - product.salePrice) / product.regularPrice) * 100
+            );
+        }
+
+        // RELATED PRODUCTS
         const relatedProducts = await Product.find({
             category: findCategory._id,
             _id: { $ne: product._id },
@@ -151,26 +158,3 @@ export const addToCart = async (req, res) => {
 };
 
 
-// ================= DEMO LOGIN =================
-export const demoLogin = async (req, res) => {
-    try {
-        const demoEmail = "demo@yourshop.com"; // create this user in DB
-        const demoUser = await User.findOne({ email: demoEmail });
-
-        if (!demoUser) {
-            return res.send("Demo user not found. Please create a demo user in DB.");
-        }
-
-        req.session.user = {
-            _id: demoUser._id,
-            name: demoUser.name,
-            email: demoUser.email
-        };
-
-        return res.redirect("/shop");
-
-    } catch (error) {
-        console.error("Error in demo login:", error);
-        return res.redirect("/pageNotFound");
-    }
-};

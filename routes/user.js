@@ -1,10 +1,10 @@
 import express from 'express' 
 const router=express.Router()
-import {filterByPrice,searchProducts,filterProduct,logout,loadSignup,signupUser,loadLogin,verifyOtp,resendOtp,loadPageNotFound,login,loadHomepage,loadShoppingPage,getContactPage} from '../controller/user/userController.js'
+import {demoLogin,filterByPrice,searchProducts,filterProduct,logout,loadSignup,signupUser,loadLogin,verifyOtp,resendOtp,loadPageNotFound,login,loadHomepage,loadShoppingPage,getContactPage} from '../controller/user/userController.js'
 import passport from '../config/passport.js'
 import {getForgotPasswordPage,forgotEmailValid,verifyOtpPass,getRestPassPage,resendOtpPass,postNewPassword,userProfile}from '../controller/user/profileController.js'
 import {userAuth} from '../middleware/auth.js'
-import {productDetailes,addReview,addToCart,demoLogin}from '../controller/user/productController.js'
+import {productDetailes,addReview,addToCart}from '../controller/user/productController.js'
 
 //signup Management
 router.get('/signUp',loadSignup)

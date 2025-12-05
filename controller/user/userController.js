@@ -372,6 +372,9 @@ export const filterProduct = async (req, res) => {
     const brandName = req.query.brand;
     const sort = req.query.sort || "";
 
+    //.log(brandName);
+    
+
     const categories = await Category.find({ isListed: true }).lean();
     const brands = await Brand.find({}).lean();
 
@@ -518,3 +521,29 @@ export const getContactPage=async(req,res)=>{
     res,redirect("/pageNotFound")
   }
 }
+
+
+
+// ================= DEMO LOGIN =================
+export const demoLogin = async (req, res) => {
+    try {
+        const demoEmail = "demo@yourshop.com"; // create this user in DB
+        const demoUser = await User.findOne({ email: demoEmail });
+
+        if (!demoUser) {
+            return res.send("Demo user not found. Please create a demo user in DB.");
+        }
+
+        req.session.user = {
+            _id: demoUser._id,
+            name: demoUser.name,
+            email: demoUser.email
+        };
+
+        return res.redirect("/");
+
+    } catch (error) {
+        console.error("Error in demo login:", error);
+        return res.redirect("/pageNotFound");
+    }
+};

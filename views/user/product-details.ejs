@@ -283,7 +283,7 @@ zoomContainer.addEventListener("mouseleave", function () {
 .product-main-img {
     width: 100%;
     height: 420px;
-    object-fit: contain;
+    object-fit: fill;
     background: #f9f9f9;
     border-radius: 10px;
     margin-bottom: 10px;
@@ -341,27 +341,6 @@ zoomContainer.addEventListener("mouseleave", function () {
     font-size: 16px;
 }
 
-/* ---------- ZOOM ---------- */
-
-.zoom-container {
-    width: 100%;
-    height: 450px;
-    overflow: hidden;
-    border-radius: 12px;
-    background: #f5f5f5;
-    cursor: crosshair;
-    position: relative;
-}
-
-.zoom-image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    transition: transform 0.2s ease;
-    position: absolute;
-    left: 0;
-    top: 0;
-}
 
 /* ---------- BREADCRUMB ---------- */
 
@@ -509,6 +488,73 @@ zoomContainer.addEventListener("mouseleave", function () {
     gap: 50px;
 }
 
+/* ======================================
+   FIXED RELATED PRODUCT IMAGE SIZE
+====================================== */
+.related-product-card img {
+    width: 160px;
+    height: 180px;
+    object-fit: contain;
+    border-radius: 6px;
+    background: #f5f5f5;
+}
+
+
+/* ======================================
+   FIXED THUMBNAIL SIZE
+====================================== */
+.thumb-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.thumb-gallery img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 5px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.thumb-gallery img:hover {
+    border-color: #000;
+    transform: scale(1.05);
+}
+
+
+/* ======================================
+   MAIN IMAGE CONTAINER
+====================================== */
+/* Main image fixed style (same for all products) */
+.zoom-container {
+    width: 100%;
+    max-width: 500px;      /* Controls WIDTH = Always same */
+    height: 550px;         /* Controls HEIGHT = Always same */
+    background: #f5f5f5;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 0 auto;        /* Center horizontally */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Image inside main box */
+.zoom-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;    /* Prevent stretching */
+    object-position: center;
+    transition: transform 0.25s ease;
+}
+
+
 </style>
 
 <main class="main">
@@ -577,7 +623,12 @@ zoomContainer.addEventListener("mouseleave", function () {
                     <div class="price-box mb-3 mt-2">
                         <span class="sale-price">₹ <%= product.salePrice %></span>
                         <span class="regular-price">₹ <%= product.regularPrice %></span>
-                        <span class="offer"><%= totalOffer %>% Off</span>
+                        <% if (totalOffer > 0) { %>
+                            <span class="offer"><%= totalOffer %>% Off</span>
+                        <% } else { %>
+                            <span class="offer">No Offer</span>
+                        <% } %>
+
                     </div>
 
                     <!-- Coupon Box -->
@@ -734,9 +785,7 @@ zoomContainer.addEventListener("mouseleave", function () {
             </div>
         </div>
 
-        <div class="mt-5">
-            <a href="/demo-login" class="btn btn-outline-primary">Try Demo Login</a>
-        </div>
+       
 </div>
     </div>
 </main>
