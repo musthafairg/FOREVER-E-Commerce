@@ -24,8 +24,8 @@ router.post('/login',login)
 router.get('/logout',logout)
 
 //Home Page & Shopping page
-router.get('/', loadHomepage)
-router.get("/shop", loadShoppingPage);
+router.get('/',userAuth, loadHomepage)
+router.get("/shop",userAuth, loadShoppingPage);
 router.get("/filter",userAuth,filterProduct);
 router.get("/filterPrice",userAuth,filterByPrice)
 router.post("/search",userAuth,searchProducts)
