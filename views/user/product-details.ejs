@@ -719,7 +719,9 @@ zoomContainer.addEventListener("mouseleave", function () {
             <div class="row related-products"  >
                 <% relatedProducts.forEach(p => { %>
                     <div class="col-md-2 col-6">
-                        <a href="/product-details?id=<%= p._id %>" class="text-decoration-none text-dark">
+
+                        
+                        <a href="/productDetails?id=<%= p._id %>" class="text-decoration-none text-dark">
                             <div class="related-product-card">
                                 <img src="/uploads/re-image/<%= p.productImage[0] %>"
                                      class="img-fluid mb-2">
