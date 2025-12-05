@@ -4,7 +4,7 @@ import {demoLogin,filterByPrice,searchProducts,filterProduct,logout,loadSignup,s
 import passport from '../config/passport.js'
 import {getForgotPasswordPage,forgotEmailValid,verifyOtpPass,getRestPassPage,resendOtpPass,postNewPassword,userProfile}from '../controller/user/profileController.js'
 import {userAuth} from '../middleware/auth.js'
-import {productDetailes,addReview,addToCart}from '../controller/user/productController.js'
+import {productDetailes,addReview}from '../controller/user/productController.js'
 
 //signup Management
 router.get('/signUp',loadSignup)
@@ -43,8 +43,7 @@ router.get("/productDetails",userAuth,productDetailes)
 // ADD REVIEW
 router.post("/product/add-review", addReview);
 
-// ADD TO CART (AJAX)
-router.post("/add-to-cart", addToCart);
+
 
 // DEMO LOGIN
 router.get("/demo-login", demoLogin);
