@@ -29,7 +29,7 @@ export const userAuth = async (req, res, next) => {
         });
       });
 
-      return; // Stop execution
+      return;
     }
 
     // No logged-in user at all
